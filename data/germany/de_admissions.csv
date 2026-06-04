@@ -54,8 +54,8 @@ Karlsruhe Institute of Technology (KIT),Wohnen/Accommodation,wohnen@kit.edu,98
 Karlsruhe Institute of Technology (KIT),Informatik/Fachbereich,studium@informatik.kit.edu,98
 Karlsruhe Institute of Technology (KIT),Ingenieurwissenschaften,ingenieurwesen@kit.edu,98
 Karlsruhe Institute of Technology (KIT),CAS/Immatrikulation,studium@kit.edu,98
-RWTH Aachen University,studienberatung,studium@rwth-aachen.de,105
-RWTH Aachen University,Bewerbung Bachelor,bewerbung-bachelor@rwth-aachen.de,105
+RWTH Aachen University,studienberatung,studsek@zhv.rwth-aachen.de,105
+RWTH Aachen University,Bewerbung Bachelor,zulassung@zhv.rwth-aachen.de,105
 RWTH Aachen University,Bewerbung Master,bewerbung-master@rwth-aachen.de,105
 RWTH Aachen University,Promotion/PhD,promotion@rwth-aachen.de,105
 RWTH Aachen University,International Office,international@rwth-aachen.de,105
@@ -98,7 +98,7 @@ University of Hamburg,Wohnen/Accommodation,wohnen@uni-hamburg.de,193
 University of Hamburg,Informatik/Fachbereich,studium@informatik.uni-hamburg.de,193
 University of Hamburg,Ingenieurwissenschaften,ingenieurwesen@uni-hamburg.de,193
 University of Hamburg,CAS/Immatrikulation,studium@uni-hamburg.de,193
-University of Freiburg,studienberatung,studium@uni-freiburg.de,201
+University of Freiburg,studienberatung,study@uni-freiburg.de,201
 University of Freiburg,Bewerbung Bachelor,bewerbung-bachelor@uni-freiburg.de,201
 University of Freiburg,Bewerbung Master,bewerbung-master@uni-freiburg.de,201
 University of Freiburg,Promotion/PhD,promotion@uni-freiburg.de,201
@@ -109,7 +109,7 @@ University of Freiburg,Wohnen/Accommodation,wohnen@uni-freiburg.de,201
 University of Freiburg,Informatik/Fachbereich,studium@informatik.uni-freiburg.de,201
 University of Freiburg,Ingenieurwissenschaften,ingenieurwesen@uni-freiburg.de,201
 University of Freiburg,CAS/Immatrikulation,studium@uni-freiburg.de,201
-University of Bonn,studienberatung,studium@uni-bonn.de,207
+University of Bonn,studienberatung,study@uni-bonn.de,207
 University of Bonn,Bewerbung Bachelor,bewerbung-bachelor@uni-bonn.de,207
 University of Bonn,Bewerbung Master,bewerbung-master@uni-bonn.de,207
 University of Bonn,Promotion/PhD,promotion@uni-bonn.de,207
@@ -142,8 +142,8 @@ Technical University of Dresden (TU Dresden),Wohnen/Accommodation,wohnen@tu-dres
 Technical University of Dresden (TU Dresden),Informatik/Fachbereich,studium@informatik.tu-dresden.de,218
 Technical University of Dresden (TU Dresden),Ingenieurwissenschaften,ingenieurwesen@tu-dresden.de,218
 Technical University of Dresden (TU Dresden),CAS/Immatrikulation,studium@tu-dresden.de,218
-FAU Erlangen-Nuremberg,studienberatung,studium@fau.de,232
-FAU Erlangen-Nuremberg,Bewerbung Bachelor,bewerbung-bachelor@fau.de,232
+FAU Erlangen-Nuremberg,studienberatung,studierendenverwaltung@fau.de,232
+FAU Erlangen-Nuremberg,Bewerbung Bachelor,zulassungsstelle@fau.de,232
 FAU Erlangen-Nuremberg,Bewerbung Master,bewerbung-master@fau.de,232
 FAU Erlangen-Nuremberg,Promotion/PhD,promotion@fau.de,232
 FAU Erlangen-Nuremberg,International Office,international@fau.de,232
@@ -153,7 +153,7 @@ FAU Erlangen-Nuremberg,Wohnen/Accommodation,wohnen@fau.de,232
 FAU Erlangen-Nuremberg,Informatik/Fachbereich,studium@informatik.fau.de,232
 FAU Erlangen-Nuremberg,Ingenieurwissenschaften,ingenieurwesen@fau.de,232
 FAU Erlangen-Nuremberg,CAS/Immatrikulation,studium@fau.de,232
-University of Göttingen,studienberatung,studium@uni-goettingen.de,243
+University of Göttingen,studienberatung,studiendekanat@med.uni-goettingen.de,243
 University of Göttingen,Bewerbung Bachelor,bewerbung-bachelor@uni-goettingen.de,243
 University of Göttingen,Bewerbung Master,bewerbung-master@uni-goettingen.de,243
 University of Göttingen,Promotion/PhD,promotion@uni-goettingen.de,243
@@ -212,25 +212,25 @@ University of Münster,studienberatung,studium@uni-muenster.de,350
 University of Münster,Bewerbung Bachelor,bewerbung-bachelor@uni-muenster.de,350
 University of Münster,Bewerbung Master,bewerbung-master@uni-muenster.de,350
 University of Münster,Promotion/PhD,promotion@uni-muenster.de,350
-University of Münster,International Office,international@uni-muenster.de,350
+University of Münster,International Office,international.office@uni-muenster.de,350
 University of Münster,Studentensekretariat,studierendensekretariat@uni-muenster.de,350
 University of Münster,Studienfinanzierung,studienfinanzierung@uni-muenster.de,350
 University of Münster,Wohnen/Accommodation,wohnen@uni-muenster.de,350
 University of Münster,Informatik/Fachbereich,studium@informatik.uni-muenster.de,350
 University of Münster,Ingenieurwissenschaften,ingenieurwesen@uni-muenster.de,350
 University of Münster,CAS/Immatrikulation,studium@uni-muenster.de,350
-Ruhr University Bochum,studienberatung,studium@ruhr-uni-bochum.de,395
+Ruhr University Bochum,studienberatung,stud-sekretariat@ruhr-uni-bochum.de,395
 Ruhr University Bochum,Bewerbung Bachelor,bewerbung-bachelor@ruhr-uni-bochum.de,395
 Ruhr University Bochum,Bewerbung Master,bewerbung-master@ruhr-uni-bochum.de,395
 Ruhr University Bochum,Promotion/PhD,promotion@ruhr-uni-bochum.de,395
-Ruhr University Bochum,International Office,international@ruhr-uni-bochum.de,395
+Ruhr University Bochum,International Office,international@rub.de,395
 Ruhr University Bochum,Studentensekretariat,studierendensekretariat@ruhr-uni-bochum.de,395
 Ruhr University Bochum,Studienfinanzierung,studienfinanzierung@ruhr-uni-bochum.de,395
 Ruhr University Bochum,Wohnen/Accommodation,wohnen@ruhr-uni-bochum.de,395
 Ruhr University Bochum,Informatik/Fachbereich,informatik@ruhr-uni-bochum.de,395
 Ruhr University Bochum,Ingenieurwissenschaften,ingenieurwesen@ruhr-uni-bochum.de,395
 Ruhr University Bochum,CAS/Immatrikulation,studium@ruhr-uni-bochum.de,395
-University of Würzburg,studienberatung,studium@uni-wuerzburg.de,416
+University of Würzburg,studienberatung,studienberatung@uni-wuerzburg.de,416
 University of Würzburg,Bewerbung Bachelor,bewerbung-bachelor@uni-wuerzburg.de,416
 University of Würzburg,Bewerbung Master,bewerbung-master@uni-wuerzburg.de,416
 University of Würzburg,Promotion/PhD,promotion@uni-wuerzburg.de,416
@@ -308,7 +308,7 @@ University of Potsdam,Informatik/Fachbereich,studium@informatik.uni-potsdam.de,4
 University of Potsdam,Ingenieurwissenschaften,ingenieurwesen@uni-potsdam.de,477
 University of Potsdam,CAS/Immatrikulation,studium@uni-potsdam.de,477
 TU Bergakademie Freiberg,studienberatung,studium@tu-freiberg.de,487
-TU Bergakademie Freiberg,Bewerbung Bachelor,bewerbung-bachelor@tu-freiberg.de,487
+TU Bergakademie Freiberg,Bewerbung Bachelor,zulassungsbuero@zuv.tu-freiberg.de,487
 TU Bergakademie Freiberg,Bewerbung Master,bewerbung-master@tu-freiberg.de,487
 TU Bergakademie Freiberg,Promotion/PhD,promotion@tu-freiberg.de,487
 TU Bergakademie Freiberg,International Office,international@tu-freiberg.de,487
@@ -395,9 +395,9 @@ Saarland University,Wohnen/Accommodation,wohnen@uni-saarland.de,635
 Saarland University,Informatik/Fachbereich,studium@informatik.uni-saarland.de,635
 Saarland University,Ingenieurwissenschaften,ingenieurwesen@uni-saarland.de,635
 Saarland University,CAS/Immatrikulation,studium@uni-saarland.de,635
-TU Dortmund University,studienberatung,studium@tu-dortmund.de,673
-TU Dortmund University,Bewerbung Bachelor,bewerbung-bachelor@tu-dortmund.de,673
-TU Dortmund University,Bewerbung Master,bewerbung-master@tu-dortmund.de,673
+TU Dortmund University,studienberatung,studiengangswechsel@tu-dortmund.de,673
+TU Dortmund University,Bewerbung Bachelor,zulassungsverfahren@tu-dortmund.de,673
+TU Dortmund University,Bewerbung Master,master-studium@tu-dortmund.de,673
 TU Dortmund University,Promotion/PhD,promotion@tu-dortmund.de,673
 TU Dortmund University,International Office,international@tu-dortmund.de,673
 TU Dortmund University,Studentensekretariat,studierendensekretariat@tu-dortmund.de,673
@@ -472,7 +472,7 @@ University of Duisburg-Essen,Wohnen/Accommodation,wohnen@uni-due.de,801
 University of Duisburg-Essen,Informatik/Fachbereich,studium@informatik.uni-due.de,801
 University of Duisburg-Essen,Ingenieurwissenschaften,ingenieurwesen@uni-due.de,801
 University of Duisburg-Essen,CAS/Immatrikulation,studium@uni-due.de,801
-University of Rostock,studienberatung,studium@uni-rostock.de,851
+University of Rostock,studienberatung,studienberatung@uni-rostock.de,851
 University of Rostock,Bewerbung Bachelor,bewerbung-bachelor@uni-rostock.de,851
 University of Rostock,Bewerbung Master,bewerbung-master@uni-rostock.de,851
 University of Rostock,Promotion/PhD,promotion@uni-rostock.de,851
@@ -505,7 +505,7 @@ Bielefeld University,Wohnen/Accommodation,wohnen@uni-bielefeld.de,1001
 Bielefeld University,Informatik/Fachbereich,studium@informatik.uni-bielefeld.de,1001
 Bielefeld University,Ingenieurwissenschaften,ingenieurwesen@uni-bielefeld.de,1001
 Bielefeld University,CAS/Immatrikulation,studium@uni-bielefeld.de,1001
-University of Siegen,studienberatung,studium@uni-siegen.de,1201
+University of Siegen,studienberatung,info.studienberatung@zsb.uni-siegen.de,1201
 University of Siegen,Bewerbung Bachelor,bewerbung-bachelor@uni-siegen.de,1201
 University of Siegen,Bewerbung Master,bewerbung-master@uni-siegen.de,1201
 University of Siegen,Promotion/PhD,promotion@uni-siegen.de,1201
@@ -527,22 +527,22 @@ RPTU Kaiserslautern-Landau,Wohnen/Accommodation,wohnen@rptu.de,1201
 RPTU Kaiserslautern-Landau,Informatik/Fachbereich,studium@informatik.rptu.de,1201
 RPTU Kaiserslautern-Landau,Ingenieurwissenschaften,ingenieurwesen@rptu.de,1201
 RPTU Kaiserslautern-Landau,CAS/Immatrikulation,studium@rptu.de,1201
-Ilmenau University of Technology,studienberatung,studium@tu-ilmenau.de,N/A
+Ilmenau University of Technology,studienberatung,studienberatung@tu-ilmenau.de,N/A
 Ilmenau University of Technology,Bewerbung Bachelor,bewerbung-bachelor@tu-ilmenau.de,N/A
 Ilmenau University of Technology,Bewerbung Master,bewerbung-master@tu-ilmenau.de,N/A
 Ilmenau University of Technology,Promotion/PhD,promotion@tu-ilmenau.de,N/A
-Ilmenau University of Technology,International Office,international@tu-ilmenau.de,N/A
+Ilmenau University of Technology,International Office,internationaloffice@tu-ilmenau.de,N/A
 Ilmenau University of Technology,Studentensekretariat,studierendensekretariat@tu-ilmenau.de,N/A
 Ilmenau University of Technology,Studienfinanzierung,studienfinanzierung@tu-ilmenau.de,N/A
 Ilmenau University of Technology,Wohnen/Accommodation,wohnen@tu-ilmenau.de,N/A
 Ilmenau University of Technology,Informatik/Fachbereich,studium@informatik.tu-ilmenau.de,N/A
 Ilmenau University of Technology,Ingenieurwissenschaften,ingenieurwesen@tu-ilmenau.de,N/A
 Ilmenau University of Technology,CAS/Immatrikulation,studium@tu-ilmenau.de,N/A
-University of Passau,studienberatung,studium@uni-passau.de,N/A
+University of Passau,studienberatung,studienberatung@uni-passau.de,N/A
 University of Passau,Bewerbung Bachelor,bewerbung-bachelor@uni-passau.de,N/A
 University of Passau,Bewerbung Master,bewerbung-master@uni-passau.de,N/A
 University of Passau,Promotion/PhD,promotion@uni-passau.de,N/A
-University of Passau,International Office,international@uni-passau.de,N/A
+University of Passau,International Office,auslandspraktikum@uni-passau.de,N/A
 University of Passau,Studentensekretariat,studierendensekretariat@uni-passau.de,N/A
 University of Passau,Studienfinanzierung,studienfinanzierung@uni-passau.de,N/A
 University of Passau,Wohnen/Accommodation,wohnen@uni-passau.de,N/A
@@ -554,7 +554,7 @@ Paderborn University,Bewerbung Bachelor,bewerbung-bachelor@uni-paderborn.de,N/A
 Paderborn University,Bewerbung Master,bewerbung-master@uni-paderborn.de,N/A
 Paderborn University,Promotion/PhD,promotion@uni-paderborn.de,N/A
 Paderborn University,International Office,international@uni-paderborn.de,N/A
-Paderborn University,Studentensekretariat,studierendensekretariat@uni-paderborn.de,N/A
+Paderborn University,Studentensekretariat,servicecenter@zv.uni-paderborn.de,N/A
 Paderborn University,Studienfinanzierung,studienfinanzierung@uni-paderborn.de,N/A
 Paderborn University,Wohnen/Accommodation,wohnen@uni-paderborn.de,N/A
 Paderborn University,Informatik/Fachbereich,studium@informatik.uni-paderborn.de,N/A
@@ -575,7 +575,7 @@ University of Greifswald,studienberatung,studium@uni-greifswald.de,N/A
 University of Greifswald,Bewerbung Bachelor,bewerbung-bachelor@uni-greifswald.de,N/A
 University of Greifswald,Bewerbung Master,bewerbung-master@uni-greifswald.de,N/A
 University of Greifswald,Promotion/PhD,promotion@uni-greifswald.de,N/A
-University of Greifswald,International Office,international@uni-greifswald.de,N/A
+University of Greifswald,International Office,international.office@uni-greifswald.de,N/A
 University of Greifswald,Studentensekretariat,studierendensekretariat@uni-greifswald.de,N/A
 University of Greifswald,Studienfinanzierung,studienfinanzierung@uni-greifswald.de,N/A
 University of Greifswald,Wohnen/Accommodation,wohnen@uni-greifswald.de,N/A

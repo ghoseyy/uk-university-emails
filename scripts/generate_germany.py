@@ -1,10 +1,5 @@
-"""Generate German university admissions email datasets.
-
-Outputs three CSVs under data/germany/ mirroring the UK structure:
-  de_admissions.csv         — multi-category contacts per university
-  de_cs_masters_ranked.csv  — filtered list offering CS MSc
-  de_university_admissions.csv — one primary contact per university
-"""
+"""Generate German university admissions email datasets,
+incorporating real scraped emails where available."""
 
 import csv
 from pathlib import Path
@@ -12,7 +7,6 @@ from pathlib import Path
 DATA = Path(__file__).resolve().parent.parent / "data" / "germany"
 DATA.mkdir(parents=True, exist_ok=True)
 
-# (QS rank, name, domain, city, state, cs_programs)
 UNIVERSITIES: list[tuple[str, str, str, str, str, str]] = [
     ("22",  "Technical University of Munich (TUM)",                "tum.de",                "Munich",       "Bavaria",       "CS, AI, ML, Robotics, Data Science"),
     ("58",  "Ludwig Maximilian University of Munich (LMU)",        "lmu.de",                "Munich",       "Bavaria",       "CS, AI, ML, Data Science, Media Informatics"),
@@ -78,7 +72,27 @@ UNIVERSITIES: list[tuple[str, str, str, str, str, str]] = [
 ]
 
 # ---------------------------------------------------------------------------
-# Email builders
+# Load scraped (real) emails to use as overrides
+# ---------------------------------------------------------------------------
+SCRAPED_SOURCE = Path(__file__).resolve().parent.parent / "data" / "de_scraped_candidates.csv"
+
+scraped_overrides: dict[str, dict[str, str]] = {}
+if SCRAPED_SOURCE.exists():
+    with open(SCRAPED_SOURCE) as f:
+        for row in csv.DictReader(f):
+            email = row["Email"].lower().strip()
+            domain = email.split("@")[-1] if "@" in email else ""
+            # skip garbage
+            if domain in ("swfr.de", "parrot-media.de", "pluswerk.digital", "international.uni"):
+                continue
+            if email.startswith("u003e"):
+                continue
+            uni = row["University"]
+            cat = row["Category"]
+            scraped_overrides.setdefault(uni, {})[cat] = email
+
+# ---------------------------------------------------------------------------
+# Email builders (same as before)
 # ---------------------------------------------------------------------------
 
 CS_SPECIAL: dict[str, str] = {
@@ -140,22 +154,41 @@ def email_engineering(domain: str, name: str = "") -> str:
 def email_cas(domain: str, name: str = "") -> str:
     return f"studium@{domain}"
 
-CATEGORY_BUILDERS: list[tuple[str, ...]] = [
-    ("studienberatung",          email_general),
-    ("Bewerbung Bachelor",       email_ug),
-    ("Bewerbung Master",         email_pgt),
-    ("Promotion/PhD",            email_phd),
-    ("International Office",     email_international),
-    ("Studentensekretariat",     email_student_services),
-    ("Studienfinanzierung",      email_finance),
-    ("Wohnen/Accommodation",     email_accommodation),
-    ("Informatik/Fachbereich",   email_cs),
-    ("Ingenieurwissenschaften",  email_engineering),
-    ("CAS/Immatrikulation",      email_cas),
+# Category definitions: (label, builder_fn, scraped_category_key)
+CATEGORIES: list[tuple[str, ...]] = [
+    ("studienberatung",          email_general,           "Studienberatung"),
+    ("Bewerbung Bachelor",       email_ug,                "Bewerbung Bachelor"),
+    ("Bewerbung Master",         email_pgt,               "Bewerbung Master"),
+    ("Promotion/PhD",            email_phd,               "Promotion/PhD"),
+    ("International Office",     email_international,     "International Office"),
+    ("Studentensekretariat",     email_student_services,  "Studentensekretariat"),
+    ("Studienfinanzierung",      email_finance,           None),
+    ("Wohnen/Accommodation",     email_accommodation,     None),
+    ("Informatik/Fachbereich",   email_cs,                None),
+    ("Ingenieurwissenschaften",  email_engineering,       None),
+    ("CAS/Immatrikulation",      email_cas,               None),
 ]
 
-def row(rank: str, name: str, domain: str) -> list[list[str]]:
-    return [[name, label, builder(domain), rank] for label, builder in CATEGORY_BUILDERS]
+SCRAPED_CAT_MAP: dict[str, str] = {
+    "Studium/Allgemein": "studienberatung",
+    "Studienberatung": "studienberatung",
+    "International Office": "International Office",
+    "Studentensekretariat": "Studentensekretariat",
+    "Bewerbung/Zulassung": "Bewerbung Bachelor",  # generic fallback
+    "Bewerbung Master": "Bewerbung Master",
+    "Service": "Studentensekretariat",
+}
+
+def resolve_email(label: str, builder, scraped_key: str | None, domain: str, uni_name: str) -> str:
+    scraped = scraped_overrides.get(uni_name, {})
+    # Check direct scraped->pattern mapping
+    if scraped_key and scraped_key in scraped:
+        return scraped[scraped_key]
+    # Also map via SCRAPED_CAT_MAP
+    for scraped_cat, pattern_cat in SCRAPED_CAT_MAP.items():
+        if label == pattern_cat and scraped_cat in scraped:
+            return scraped[scraped_cat]
+    return builder(domain, uni_name)
 
 # ---------------------------------------------------------------------------
 # de_admissions.csv
@@ -163,7 +196,9 @@ def row(rank: str, name: str, domain: str) -> list[list[str]]:
 header = ["University", "Category", "Email", "QS 2026 Rank"]
 all_rows: list[list[str]] = [header]
 for rank, name, domain, *_ in UNIVERSITIES:
-    all_rows.extend(row(rank, name, domain))
+    for label, builder, scraped_key in CATEGORIES:
+        email = resolve_email(label, builder, scraped_key, domain, name)
+        all_rows.append([name, label, email, rank])
 
 with open(DATA / "de_admissions.csv", "w", newline="", encoding="utf-8") as f:
     csv.writer(f).writerows(all_rows)
@@ -175,7 +210,10 @@ print(f"→ de_admissions.csv  -  {len(all_rows) - 1} rows")
 cs_header = ["QS 2026 Rank", "University", "Admissions Email", "Website", "State", "Relevant MSc Programs"]
 cs_rows: list[list[str]] = [cs_header]
 for rank, name, domain, _, state, prog in UNIVERSITIES:
-    cs_rows.append([rank, name, email_general(domain), f"https://www.{domain}", state, prog])
+    scraped = scraped_overrides.get(name, {})
+    primary = scraped.get("Studienberatung") or scraped.get("Studium/Allgemein") or scraped.get("Bewerbung/Zulassung") or email_general(domain)
+    website = f"https://www.{domain}"
+    cs_rows.append([rank, name, primary, website, state, prog])
 
 with open(DATA / "de_cs_masters_ranked.csv", "w", newline="", encoding="utf-8") as f:
     csv.writer(f).writerows(cs_rows)
@@ -187,9 +225,13 @@ print(f"→ de_cs_masters_ranked.csv  -  {len(cs_rows) - 1} rows")
 simple_header = ["University", "Admissions Email", "Website", "State"]
 simple_rows: list[list[str]] = [simple_header]
 for rank, name, domain, _, state, _ in UNIVERSITIES:
-    simple_rows.append([name, email_general(domain), f"https://www.{domain}", state])
+    scraped = scraped_overrides.get(name, {})
+    primary = scraped.get("Studienberatung") or scraped.get("Studium/Allgemein") or scraped.get("Bewerbung/Zulassung") or email_general(domain)
+    website = f"https://www.{domain}"
+    simple_rows.append([name, primary, website, state])
 
 with open(DATA / "de_university_admissions.csv", "w", newline="", encoding="utf-8") as f:
     csv.writer(f).writerows(simple_rows)
 print(f"→ de_university_admissions.csv  -  {len(simple_rows) - 1} rows")
+
 print("Done.")
