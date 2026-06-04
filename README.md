@@ -41,6 +41,23 @@ University, Admissions Email, Website, Region
 - **UCAS** (official UK university list)
 - Individual university websites (verified admissions contact pages)
 - Official `.ac.uk` domain registry
+- **Web scraping** — `scripts/scrape.py` crawls university contact pages to discover and verify admissions emails
+
+## How emails were collected
+
+The initial dataset was compiled through:
+1. Web research across official university websites
+2. Known email patterns (`admissions@*.ac.uk`, `ug.admissions@*`, etc.)
+3. FOI disclosure logs and public contact directories
+4. The `scripts/scrape.py` tool can be re-run to verify existing emails and discover new ones
+
+To re-scrape and verify:
+
+```bash
+uv run scripts/scrape.py
+```
+
+This crawls each university's admissions/contact pages and scores extracted emails by relevance. Results are saved to `data/uk_scraped_candidates.csv` for review before merging.
 
 ## Usage (uv)
 
