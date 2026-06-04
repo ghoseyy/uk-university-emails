@@ -3,7 +3,7 @@ name = "uk-university-emails"
 version = "0.1.0"
 description = "UK University Admissions Emails Dataset — 1,293 verified admissions emails across all UK universities, ranked by QS 2026"
 requires-python = ">=3.12"
-dependencies = ["rich>=13", "csvkit>=2"]
+dependencies = ["rich>=13", "csvkit>=2", "httpx>=0.28", "beautifulsoup4>=4", "lxml>=5"]
 
 [project.urls]
 Homepage = "https://github.com/bimqllabs/uk-university-emails"
@@ -13,6 +13,7 @@ Issues = "https://github.com/bimqllabs/uk-university-emails/issues"
 [project.scripts]
 uk-validate = "scripts.validate:main"
 uk-query = "scripts.query:main"
+uk-scrape = "scripts.scrape:main"
 
 [tool.uv.sources]
 
