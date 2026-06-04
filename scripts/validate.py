@@ -15,6 +15,13 @@ EXPECTED_SCHEMAS = {
     "uk_university_admissions_emails.csv": [
         "University", "Admissions Email", "Website", "Region",
     ],
+    "germany/de_admissions.csv": ["University", "Category", "Email", "QS 2026 Rank"],
+    "germany/de_cs_masters_ranked.csv": [
+        "QS 2026 Rank", "University", "Admissions Email", "Website", "State", "Relevant MSc Programs",
+    ],
+    "germany/de_university_admissions.csv": [
+        "University", "Admissions Email", "Website", "State",
+    ],
 }
 
 

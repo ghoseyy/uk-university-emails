@@ -40,16 +40,23 @@ def main():
     rows = read(file)
 
     if len(sys.argv) < 2:
-        print("Usage: uv run scripts/query.py <search-term>")
+        print("Usage: uv run scripts/query.py <search-term> [<data-file>]")
         print()
         fmt(rows[:10], ["University", "Category", "Email", "QS 2026 Rank"])
         print(f"\nShowing 10 of {len(rows)} entries. Provide a search term to filter.")
         return 0
 
+    if len(sys.argv) >= 3:
+        alt = Path(sys.argv[2])
+        if alt.exists():
+            file = alt
+            rows = read(file)
+
     q = sys.argv[1].lower()
     matched = [r for r in rows if q in r["University"].lower() or q in r["Category"].lower() or q in r["Email"].lower()]
 
-    fmt(matched, ["University", "Category", "Email", "QS 2026 Rank"])
+    cols = [c for c in ["University", "Category", "Email", "QS 2026 Rank"] if c in rows[0]]
+    fmt(matched, cols)
     print(f"\n{len(matched)} result(s) for {q!r} (of {len(rows)} total)")
     return 0
 

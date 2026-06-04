@@ -1,53 +1,56 @@
-# UK University Admissions Emails Dataset
+# University Admissions Emails Dataset
 
-A comprehensive, structured dataset of UK university admissions contact emails, ranked by **QS World University Rankings 2026**.
+A comprehensive, structured dataset of **UK** and **German** university admissions contact emails, ranked by **QS World University Rankings 2026**.
 
 ## Datasets
+
+### United Kingdom
 
 | File | Entries | Description |
 |------|---------|-------------|
 | `data/uk_all_1000plus.csv` | **1,293** | Full dataset: UG/PGT/PGR/International/CS dept/CAS/Finance admissions emails per university, QS-ranked |
-| `data/uk_uni_cs_masters_ranked.csv` | **124** | Filtered: universities offering MSc in CS/AI/ML/Cyber Security, ranked |
+| `data/uk_uni_cs_masters_ranked.csv` | **124** | Filtered: UK universities offering MSc in CS/AI/ML/Cyber Security, ranked |
 | `data/uk_university_admissions_emails.csv` | **162** | Quick reference: one primary admissions email per UK university |
 
-## Features
+### Germany
 
-- **QS 2026 World Rankings** included for every institution
-- **Multiple contact categories** per university: General, UG, PGT, PGR, CS Dept, Engineering, International, CAS, Finance, Accommodation
-- **MSc programme coverage** noted for CS, AI, ML, Cyber Security, Data Science, Computer Vision
-- **Region-tagged**: England, Scotland, Wales, Northern Ireland
-- **Verified domains**: all emails use official `ac.uk` (or institutional) domains
+| File | Entries | Description |
+|------|---------|-------------|
+| `data/germany/de_admissions.csv` | **671** | Full dataset: Studienberatung/Bachelor/Master/PhD/International/CS dept/Finance/Accommodation contacts per university, QS-ranked |
+| `data/germany/de_cs_masters_ranked.csv` | **61** | Filtered: German universities offering CS/AI/ML/Data Science MSc programmes, ranked |
+| `data/germany/de_university_admissions.csv` | **61** | Quick reference: one primary admissions email per German university |
 
 ## Schema
 
-### `uk_all_1000plus.csv`
+### Multi-category files (`uk_all_1000plus.csv`, `de_admissions.csv`)
 ```
 University, Category, Email, QS 2026 Rank
 ```
 
-### `uk_uni_cs_masters_ranked.csv`
+### CS Masters filtered (`uk_uni_cs_masters_ranked.csv`, `de_cs_masters_ranked.csv`)
 ```
-QS 2026 Rank, University, Admissions Email, Website, Region, Relevant MSc Programs
+QS 2026 Rank, University, Admissions Email, Website, Region/State, Relevant MSc Programs
 ```
 
-### `uk_university_admissions_emails.csv`
+### Quick reference (`uk_university_admissions_emails.csv`, `de_university_admissions.csv`)
 ```
-University, Admissions Email, Website, Region
+University, Admissions Email, Website, Region/State
 ```
 
 ## Data Sources
 
 - **QS World University Rankings 2026** (`topuniversities.com`)
 - **UCAS** (official UK university list)
+- **Hochschulkompass** and individual German university websites
 - Individual university websites (verified admissions contact pages)
-- Official `.ac.uk` domain registry
+- Official `.ac.uk` and `.de` domain registries
 - **Web scraping** — `scripts/scrape.py` crawls university contact pages to discover and verify admissions emails
 
 ## How emails were collected
 
 The initial dataset was compiled through:
 1. Web research across official university websites
-2. Known email patterns (`admissions@*.ac.uk`, `ug.admissions@*`, etc.)
+2. Known email patterns (`admissions@*.ac.uk`, `studium@uni-*.de`, etc.)
 3. FOI disclosure logs and public contact directories
 4. The `scripts/scrape.py` tool can be re-run to verify existing emails and discover new ones
 
@@ -57,7 +60,7 @@ To re-scrape and verify:
 uv run scripts/scrape.py
 ```
 
-This crawls each university's admissions/contact pages and scores extracted emails by relevance. Results are saved to `data/uk_scraped_candidates.csv` for review before merging.
+This crawls each university's admissions/contact pages and scores extracted emails by relevance. Results are saved for review before merging.
 
 ## Usage (uv)
 
@@ -69,11 +72,11 @@ This project uses [uv](https://docs.astral.sh/uv/) — the fast Python package a
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-### Query the dataset
+### Query the UK dataset
 
 ```bash
 # Clone
-git clone https://github.com/bimqllabs/uk-university-emails.git
+git clone https://github.com/ghoseyy/uk-university-emails.git
 cd uk-university-emails
 
 # Search for a university or keyword
@@ -82,30 +85,29 @@ uv run scripts/query.py cambridge
 # Search by category
 uv run scripts/query.py "CS Dept"
 
-# Search by email domain
-uv run scripts/query.py "ac.uk"
-
-# Validate all emails
-uv run scripts/validate.py
+# Search by country (Germany)
+uv run scripts/query.py "studium@" data/germany/de_admissions.csv
 ```
 
-### Install dependencies & use interactively
+### Query the German dataset
 
 ```bash
-uv sync
-uv run python -c "
-import csv
-with open('data/uk_all_1000plus.csv') as f:
-    for row in csv.DictReader(f):
-        print(f\"{row['University']:40s} {row['Category']:25s} {row['Email']}\")
-"
+uv run scripts/query.py "TUM" data/germany/de_admissions.csv
+uv run scripts/query.py "Informatik" data/germany/de_cs_masters_ranked.csv
+```
+
+### Validate all emails
+
+```bash
+uv run scripts/validate.py
 ```
 
 ### Use csvkit for quick analysis
 
 ```bash
 uv run csvstat data/uk_all_1000plus.csv
-uv run csvcut -c University,Email data/uk_all_1000plus.csv | uv run csvlook
+uv run csvstat data/germany/de_admissions.csv
+uv run csvcut -c University,Email data/germany/de_university_admissions.csv | uv run csvlook
 ```
 
 ## Licence
@@ -118,7 +120,7 @@ Contributions are welcome! Please read [CONTRIBUTING](CONTRIBUTING.md) first.
 
 - **Add missing emails** — submit a PR with your additions
 - **Report broken emails** — open an issue
-- **Suggest new categories** — start a discussion
+- **Suggest new categories or countries** — start a discussion
 
 ## Disclaimer
 
