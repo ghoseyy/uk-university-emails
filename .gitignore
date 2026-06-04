@@ -1,0 +1,19 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# Temporary
+*.tmp
+*.temp
+*~
+
+# Environment
+.env
+.env.local
