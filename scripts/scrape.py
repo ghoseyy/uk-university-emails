@@ -194,7 +194,7 @@ async def main():
     print(f"Will scrape {len(uni_urls)} university websites\n")
 
     headers = {
-        "User-Agent": "uk-university-emails-scraper/1.0 (dataset maintenance; +https://github.com/ghoseyy/uk-university-emails)",
+        "User-Agent": "university-admissions-emails-scraper/1.0 (dataset maintenance; +https://github.com/ghoseyy/university-admissions-emails)",
         "Accept": "text/html,application/xhtml+xml",
     }
     limits = httpx.Limits(max_keepalive_connections=10, max_connections=10)

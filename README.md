@@ -84,7 +84,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ```bash
 # Clone
-git clone https://github.com/ghoseyy/uk-university-emails.git
+git clone https://github.com/ghoseyy/university-admissions-emails.git
 cd uk-university-emails
 
 # Search for a university or keyword
