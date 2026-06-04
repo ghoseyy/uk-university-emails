@@ -2,6 +2,22 @@
 
 Thanks for your interest in contributing! This project thrives on community updates to keep email addresses current.
 
+## Project Setup (uv)
+
+This project uses [uv](https://docs.astral.sh/uv/) for Python project management.
+
+```bash
+# Clone your fork
+git clone https://github.com/YOUR_USERNAME/uk-university-emails.git
+cd uk-university-emails
+
+# Sync dependencies
+uv sync
+
+# Validate your changes
+uv run scripts/validate.py
+```
+
 ## How to Contribute
 
 ### 1. Add or Update Emails
@@ -11,6 +27,7 @@ Thanks for your interest in contributing! This project thrives on community upda
 - Follow the existing schema (same columns, quote all fields)
 - Use the official university `.ac.uk` domain where possible
 - Include the QS 2026 rank if known (use `N/A` if unranked)
+- Run `uv run scripts/validate.py` to verify your changes
 
 ### 2. Report Issues
 

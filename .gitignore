@@ -17,3 +17,7 @@ Thumbs.db
 # Environment
 .env
 .env.local
+
+# uv — virtual env (not committed, uv.lock IS committed)
+.venv/
+__pycache__/
