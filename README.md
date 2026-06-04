@@ -42,22 +42,53 @@ University, Admissions Email, Website, Region
 - Individual university websites (verified admissions contact pages)
 - Official `.ac.uk` domain registry
 
-## Usage
+## Usage (uv)
+
+This project uses [uv](https://docs.astral.sh/uv/) — the fast Python package and project manager.
+
+### Install uv
 
 ```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/uk-university-emails.git
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+### Query the dataset
+
+```bash
+# Clone
+git clone https://github.com/bimqllabs/uk-university-emails.git
 cd uk-university-emails
 
-# View as CSV (any language/tool)
-# Python example:
-python3 -c "
+# Search for a university or keyword
+uv run scripts/query.py cambridge
+
+# Search by category
+uv run scripts/query.py "CS Dept"
+
+# Search by email domain
+uv run scripts/query.py "ac.uk"
+
+# Validate all emails
+uv run scripts/validate.py
+```
+
+### Install dependencies & use interactively
+
+```bash
+uv sync
+uv run python -c "
 import csv
 with open('data/uk_all_1000plus.csv') as f:
-    reader = csv.DictReader(f)
-    for row in reader:
+    for row in csv.DictReader(f):
         print(f\"{row['University']:40s} {row['Category']:25s} {row['Email']}\")
 "
+```
+
+### Use csvkit for quick analysis
+
+```bash
+uv run csvstat data/uk_all_1000plus.csv
+uv run csvcut -c University,Email data/uk_all_1000plus.csv | uv run csvlook
 ```
 
 ## Licence
