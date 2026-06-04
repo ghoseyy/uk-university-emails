@@ -1,6 +1,6 @@
 # University Admissions Emails Dataset
 
-A comprehensive, structured dataset of **UK** and **German** university admissions contact emails, ranked by **QS World University Rankings 2026**.
+A comprehensive, structured dataset of **UK**, **German**, and **Norwegian** university admissions contact emails, ranked by **QS World University Rankings 2026**.
 
 ## Datasets
 
@@ -19,6 +19,14 @@ A comprehensive, structured dataset of **UK** and **German** university admissio
 | `data/germany/de_admissions.csv` | **671** | Full dataset: Studienberatung/Bachelor/Master/PhD/International/CS dept/Finance/Accommodation contacts per university, QS-ranked |
 | `data/germany/de_cs_masters_ranked.csv` | **61** | Filtered: German universities offering CS/AI/ML/Data Science MSc programmes, ranked |
 | `data/germany/de_university_admissions.csv` | **61** | Quick reference: one primary admissions email per German university |
+
+### Norway
+
+| File | Entries | Description |
+|------|---------|-------------|
+| `data/norway/no_admissions.csv` | **200** | Full dataset: Study/Admissions/Bachelor/Master/PhD/International/CS dept/Housing/Finance contacts per university, QS-ranked |
+| `data/norway/no_cs_masters_ranked.csv` | **20** | Filtered: Norwegian universities offering CS/AI/Data Science MSc programmes, ranked |
+| `data/norway/no_university_admissions.csv` | **20** | Quick reference: one primary admissions email per Norwegian university |
 
 ## Schema
 
